@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <header class="header">
+        <i class="fa-solid fa-list-check fa-2xl ICON"></i>
+        <h1>To do list</h1>
+    </header>
+
+    <main class="main"> 
+        <div class="navbar"> 
+            <div class="navbar-main">
+                <button class="button-nav All-task" data-all-task><i class="fa-solid fa-clipboard fa-sm"></i>All tasks</button>
+                <button class="button-nav today-task active" data-today-task><i class="fa-regular fa-calendar-days fa-sm"></i>Today</button>
+            </div>
+            <h3 id="project-title">Projects</h3>
+            <div class="project-lists">
+                <button class="button-nav">Gym <i class="fa-solid fa-trash-can"></i></button>
+                <button class="button-nav">Work</button>
+                <button class="button-nav">Home</button>
+            </div>
+            <form action="" data-new-project-form>
+                <input type="text" class="new project" placeholder="New project name" aria-label="New Project name">
+                <button class="project-btn"><i class="fa-solid fa-square-plus fa-xl"></i></button>
+            </form>
+            </div>
+        <div class="content">
+            <h3 class="project-title">Project name</h3>
+            <div class="task-body">
+                <div class="tasks-container">
+                    <div class="tasks">
+                        <input type="checkbox" id="task-1">
+                        <label for="task-1">finish work report</label>
+                    </div>
+                    <div class="tasks-description">23/03/1999
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    <div class="tasks">
+                        <input type="checkbox" id="task-2">
+                        <label for="task-2">finish work report</label>
+                    </div>
+                    <div class="tasks-description"></div>
+                </div>
+                <div class="tasks-container">
+                    <div class="tasks">
+                        <input type="checkbox" id="task-3">
+                        <label for="task-3">finish work report</label>
+                    </div>
+                    <div class="tasks-description"></div>
+                </div>
+               
+            </div>
+            <div class="control-panel">
+                <i id="new-task" class="fa-solid fa-circle-plus fa-2xl"></i>
+                <span>Add new task</span>
+                <button class="task-del">Clear completed task</button>
+            </div>
+            <dialog class="add-task-modal">
+                <input type="text" class="modal-item task-name" placeholder="New project name" aria-label="New task name">
+                <input type="date" class="modal-item task-date" aria-label="task-due-date">
+                <div id="priority">
+                    <span>Priority:</span>
+                    <select class="modal-item task-priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <button class="add-task-btn">Add task</button>
+            </dialog>
+        </div>
+    </main>
+    <footer>Copyright Deannguyen</footer>
+
+    <script src="https://kit.fontawesome.com/7eca06f1bf.js" crossorigin="anonymous"></script>
+     
+    
+</body>
+</html>
