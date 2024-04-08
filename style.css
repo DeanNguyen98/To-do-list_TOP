@@ -55,9 +55,25 @@ main {
     align-items: center;
     gap: .5rem;
 }
-.button-nav:hover {
-    opacity: .7;
+
+.button-project {
+    justify-content: space-between;
 }
+
+.button-project:hover {
+    background-color: #DCDCDC;
+    opacity: .7;
+    border-radius: 8px;
+}
+
+.button-project .trash-btn {
+    display: none;
+}
+
+.button-project:hover .trash-btn {
+    display: block;
+}
+
 .active {
     background-color:whitesmoke;
     border-radius: 8px;
