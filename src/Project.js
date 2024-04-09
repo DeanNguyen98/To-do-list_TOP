@@ -1,4 +1,6 @@
-let projectlist = [];
+let defaultProjectList=[];
+let projectlist = localStorage.getItem("myProjectList");
+    projectlist = JSON.parse(projectlist || JSON.stringify(defaultProjectList));
 let activeId;
 
 class Project {
@@ -8,6 +10,9 @@ class Project {
         this.tasks = [];
     }
 }
+function saveToLocalStorage(){
+    localStorage.setItem("myProjectList", JSON.stringify(projectlist));
+}
 
 function createNewProject (e) {
     e.preventDefault();
@@ -16,11 +21,12 @@ function createNewProject (e) {
         alert("Project name cannot be empty");
         return;
     }
-    const newproject = new Project(projectinput.value, new Date().getTime());
+    const newproject = new Project(projectinput.value, Date.now().toString());
     projectlist.push(newproject);
     renderProject(projectlist);
     console.log(projectlist);
     projectinput.value = null;
+    saveToLocalStorage();
 }
 
 function createProjectTemplate (project) {
@@ -63,4 +69,4 @@ function getActiveProject (e) {
 }
 
 
-export {createNewProject, getActiveProject};
+export {projectlist, activeId, createNewProject, getActiveProject, saveToLocalStorage, renderProject};
