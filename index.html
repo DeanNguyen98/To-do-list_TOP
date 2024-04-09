@@ -32,13 +32,14 @@
         <div class="content">
             <h3 class="project-title">Project name</h3>
             <div class="task-body">
-                <div class="tasks-container">
+                <!-- <div class="tasks-container">
                     <div class="tasks">
                         <input type="checkbox" id="task-1">
                         <label for="task-1">finish work report</label>
                     </div>
                     <div class="tasks-description">
-
+                        <div class="descript date">23/03/1999</div>
+                        <div class="descript priority high">High</div>
                     </div>
                 </div>
                 <div class="tasks-container">
@@ -46,15 +47,21 @@
                         <input type="checkbox" id="task-2">
                         <label for="task-2">finish work report</label>
                     </div>
-                    <div class="tasks-description"></div>
+                    <div class="tasks-description">
+                        <div class="descript date">23/03/1999</div>
+                        <div class="descript priority medium">Medium</div>
+                    </div>
                 </div>
                 <div class="tasks-container">
                     <div class="tasks">
                         <input type="checkbox" id="task-3">
                         <label for="task-3">finish work report</label>
                     </div>
-                    <div class="tasks-description"></div>
-                </div>
+                    <div class="tasks-description">
+                        <div class="descript date">23/03/1999</div>
+                        <div class="descript priority low">Low</div>
+                    </div>
+                </div> -->
                
             </div>
             <div class="control-panel">
@@ -63,8 +70,9 @@
                 <button class="task-del">Clear completed task</button>
             </div>
             <dialog class="add-task-modal">
-                <input type="text" class="modal-item task-name" placeholder="New project name" aria-label="New task name">
-                <input type="date" class="modal-item task-date" aria-label="task-due-date">
+                <form method="dialog" data-new-task-form>
+                <input type="text" class="modal-item task-name" placeholder="New project name" aria-label="New task name" required>
+                <input type="date" class="modal-item task-date" aria-label="task-due-date" required>
                 <div id="priority">
                     <span>Priority:</span>
                     <select class="modal-item task-priority">
@@ -73,7 +81,9 @@
                         <option value="low">Low</option>
                     </select>
                 </div>
-                <button class="add-task-btn">Add task</button>
+                <button class="modal-btn task-btn">Add task</button>
+                <button class="modal-btn close-btn">Close</button>
+            </form>
             </dialog>
         </div>
     </main>
