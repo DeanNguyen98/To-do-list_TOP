@@ -1,3 +1,4 @@
+import { renderTasks } from "./Task";
 let defaultProjectList=[];
 let projectlist = localStorage.getItem("myProjectList");
     projectlist = JSON.parse(projectlist || JSON.stringify(defaultProjectList));
@@ -52,6 +53,7 @@ function renderProject (list) {
         const projectIndex = projectlist.indexOf(project);
         projectlist.splice(projectIndex, 1);
         projectcontainer.removeChild(projectButton);
+        saveToLocalStorage();
     })
     })
 }
@@ -66,6 +68,9 @@ function getActiveProject (e) {
         activeId = e.target.dataset.listId;
     }
     console.log(activeId);
+    //add render tasks function for active project
+    const activeproj = projectlist.find(project => project.id === activeId);
+    renderTasks(activeproj);
 }
 
 
