@@ -1,11 +1,11 @@
 import { projectlist, activeId, saveToLocalStorage } from "./Project";
 class Task {
-    constructor(name, date, priority) {
+    constructor(name, date, priority, complete) {
         this.name =name;
         this.id = Date.now().toString();
         this.priority = priority;
         this.date = date;
-        this.complete = false;
+        this.complete = complete;
     }
 }
 
@@ -26,6 +26,10 @@ function createTaskTemplate(task) {
     const taskcheckbox = document.createElement("input");
     taskcheckbox.type = "checkbox";
     taskcheckbox.id = `task-${task.id}`;
+    taskcheckbox.checked = task.complete;
+    taskcheckbox.addEventListener("change", () => {
+        changeTaskcondition(taskcheckbox, task);
+    })
     const tasklabel = document.createElement("label");
     tasklabel.for = `task-${task.id}`;
     tasklabel.textContent = task.name; 
@@ -87,19 +91,26 @@ function switchPriority(content, task) {
         content.classList.add("high");
         break;
     }
+    saveToLocalStorage();
 }
+//////
+
+//logic to change task complete condition upon clicked
+function changeTaskcondition(checkbox,task) {
+    task.complete = checkbox.checked;
+    saveToLocalStorage();
+}
+//////
 
 function addNewTask() {
     const taskname = document.querySelector(".task-name");
     const taskdate = document.querySelector(".task-date");
     const taskpriority = document.querySelector(".task-priority");
-    const newTask = new Task(taskname.value,taskdate.value, taskpriority.value);
+    const newTask = new Task(taskname.value,taskdate.value, taskpriority.value, false);
     const activeproject = projectlist.find(project => project.id === activeId);
     if (activeproject) {
-        activeproject.tasks.push(newTask); 
-        const taskbody = document.querySelector(".task-body")
-        const newTaskDiv = createTaskTemplate(newTask)
-        taskbody.appendChild(newTaskDiv);
+        activeproject.tasks.push(newTask);
+        renderTasks(activeproject); 
     } else {
         alert("Please select a project to add your task");
     }
@@ -107,6 +118,24 @@ function addNewTask() {
     taskdate.value = null;
     console.log(activeproject);
     saveToLocalStorage();
+}
+
+function renderTasks(project) {
+    const taskbody = document.querySelector(".task-body");
+    taskbody.innerText = "";
+    project.tasks.forEach(task => {
+        const Tasks = createTaskTemplate(task);
+        taskbody.appendChild(Tasks);
+    })
+    console.log(project.tasks);
+}
+
+function removeCompletedTask() {
+    const activeproject = projectlist.find(project => project.id === activeId);
+    activeproject.tasks = activeproject.tasks.filter(task=> !task.complete);
+    renderTasks(activeproject);
+    saveToLocalStorage();
+    
 }
 
 function closeTaskModal() {
@@ -117,4 +146,6 @@ function closeTaskModal() {
     })
 }
 
-export {openTaskModal, closeTaskModal, addNewTask};
+
+
+export {openTaskModal, closeTaskModal, addNewTask, renderTasks, removeCompletedTask};
