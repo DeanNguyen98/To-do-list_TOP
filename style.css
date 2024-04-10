@@ -1,12 +1,3 @@
-:root {
-    --blue: cornflowerblue;
-    --light-grey: whitesmoke;
-    --light-blue: #A8A8A8;
-    --white: #FCFCFC;
-    
-
-}
-
 body {
     font-family: "Roboto";
     margin:0;
@@ -178,6 +169,7 @@ main {
     padding: .4rem;
     border-radius: 6px;
     border: 1px solid grey;
+    cursor: pointer;
 
 }
 .high {
@@ -190,13 +182,28 @@ main {
 .low {
     background-color: #7CFC00;
 }
+
+.add-task-modal {
+    border: 2px solid white;
+    border-radius: 7px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
 .modal-item {
     background: #F5DEB3;
     border: none;
     padding: .3rem;
     border-radius: 5px;
     outline: none;
-    margin: .3rem;
+    margin: .5rem;
+}
+
+.fade-out {
+    animation: fade-out-left .5s forwards;
 }
 
 .modal-btn {
