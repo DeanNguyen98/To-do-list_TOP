@@ -1,5 +1,5 @@
 import { createNewProject , getActiveProject, renderProject,projectlist } from "./Project";
-import { closeTaskModal, openTaskModal, addNewTask } from "./Task";
+import { closeTaskModal, openTaskModal, addNewTask, removeCompletedTask } from "./Task";
 function ProjectEventListener () {
     const projectform = document.querySelector(".project-form");
     projectform.addEventListener("submit", (createNewProject));
@@ -11,6 +11,8 @@ function ProjectEventListener () {
 function TaskEventListener() {
     const taskform = document.querySelector("[data-new-task-form]");
     taskform.addEventListener("submit", (addNewTask));
+    const taskDelBtn = document.querySelector(".task-del");
+    taskDelBtn.addEventListener("click", (removeCompletedTask));
 }
 ProjectEventListener();
 TaskEventListener();
