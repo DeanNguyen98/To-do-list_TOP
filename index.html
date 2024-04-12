@@ -66,12 +66,12 @@
             </div>
             <div class="control-panel">
                 <i id="new-task" class="fa-solid fa-circle-plus fa-2xl"></i>
-                <span>Add new task</span>
+                <span id="span">Add new task</span>
                 <button class="task-del">Clear completed task</button>
             </div>
             <dialog class="add-task-modal">
                 <form method="dialog" data-new-task-form>
-                <input type="text" class="modal-item task-name" placeholder="New project name" aria-label="New task name" required>
+                <input type="text" class="modal-item task-name" placeholder="New task name" aria-label="New task name" required>
                 <input type="date" class="modal-item task-date" aria-label="task-due-date" required>
                 <div id="priority">
                     <span style="font-size: 1rem">Priority:</span>
