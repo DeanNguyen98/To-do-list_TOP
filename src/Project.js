@@ -1,4 +1,5 @@
 import { renderTasks } from "./Task";
+import { renderAlltask } from "./navbar";
 let defaultProjectList=[];
 let projectlist = localStorage.getItem("myProjectList");
     projectlist = JSON.parse(projectlist || JSON.stringify(defaultProjectList));
@@ -65,12 +66,35 @@ function getActiveProject (e) {
     })
     if (e.target.tagName.toLowerCase() === "button") {
         e.target.classList.add("active");
-        activeId = e.target.dataset.listId;
+        if (e.target.classList.contains("All-task")) {
+            activeId = "All";
+        } else if ( e.target.classList.contains("today-task")) {
+            activeId = "Today";
+        } else {
+            activeId = e.target.dataset.listId;
+        }
     }
     console.log(activeId);
     //add render tasks function for active project
-    const activeproj = projectlist.find(project => project.id === activeId);
-    renderTasks(activeproj);
+    const projecttitle = document.querySelector(".project-title");
+    //Omit add-task button in today tab all All task tab
+    const plusButton = document.getElementById("new-task");
+    const span = document.getElementById("span");
+
+    if (activeId === "All") {
+        plusButton.className = "";
+        span.textContent = "";
+        projecttitle.textContent = "All task";
+        renderAlltask();
+    } else if (activeId === "Today") {
+        projecttitle.textContent = "Today"
+    } else {
+        plusButton.className = "fa-solid fa-circle-plus fa-2xl";
+        span.textContent = "Add new task";
+        const activeproj = projectlist.find(project => project.id === activeId);
+        projecttitle.textContent = activeproj.name;
+        renderTasks(activeproj.tasks);
+    }
 }
 
 
