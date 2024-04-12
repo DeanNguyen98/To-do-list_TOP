@@ -21,6 +21,7 @@ function openTaskModal() {
 function createTaskTemplate(task) {
     const taskcontainer = document.createElement("div");
     taskcontainer.classList.add("tasks-container");
+    taskcontainer.id = `${task.id} container`;
     const tasksDiv = document.createElement("div");
     tasksDiv.classList.add("tasks");
     const taskcheckbox = document.createElement("input");
@@ -42,7 +43,7 @@ function createTaskTemplate(task) {
     const descriptDate = document.createElement("div");
     descriptDate.classList.add("descript", "date");
     descriptDate.innerText = (task.date).toString();
-    const descriptPriority = document.createElement("div");
+    const descriptPriority = document.createElement("button");
     descriptPriority.classList.add("descript", "priority");
     switch(task.priority) {
         case 'high':
@@ -110,7 +111,7 @@ function addNewTask() {
     const activeproject = projectlist.find(project => project.id === activeId);
     if (activeproject) {
         activeproject.tasks.push(newTask);
-        renderTasks(activeproject); 
+        renderTasks(activeproject.tasks); 
     } else {
         alert("Please select a project to add your task");
     }
@@ -120,21 +121,29 @@ function addNewTask() {
     saveToLocalStorage();
 }
 
-function renderTasks(project) {
+function renderTasks(tasks) {
     const taskbody = document.querySelector(".task-body");
     taskbody.innerText = "";
-    project.tasks.forEach(task => {
+    tasks.forEach(task => {
         const Tasks = createTaskTemplate(task);
         taskbody.appendChild(Tasks);
     })
-    console.log(project.tasks);
+    console.log(tasks);
 }
 
 function removeCompletedTask() {
     const activeproject = projectlist.find(project => project.id === activeId);
-    activeproject.tasks = activeproject.tasks.filter(task=> !task.complete);
-    renderTasks(activeproject);
-    saveToLocalStorage();
+    const completedtask = activeproject.tasks.filter(task => task.complete);
+    completedtask.forEach(task => {
+        const taskElement = document.getElementById(`${task.id} container`);
+        taskElement.classList.add("slide");
+    })
+    setTimeout(() => {
+        activeproject.tasks = activeproject.tasks.filter(task=> !task.complete);
+        renderTasks(activeproject.tasks);
+        saveToLocalStorage();
+    }, 200);
+    
     
 }
 
