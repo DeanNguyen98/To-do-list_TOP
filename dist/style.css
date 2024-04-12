@@ -106,6 +106,15 @@ main {
     justify-content: space-between;
 }
 
+.slide {
+    animation: slideUp 0.3s forwards; /* Define the slide-up animation */
+}
+
+@keyframes slideUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100%); } /* Move container up */
+}
+
 .tasks {
     position: relative;
 }
@@ -159,6 +168,9 @@ main {
     opacity: .8;
 }
 
+[type="checkbox"] {
+    margin-right: .5rem;
+}
 .tasks-description {
     display: flex;
     gap: 1rem;
