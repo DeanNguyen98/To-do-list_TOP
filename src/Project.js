@@ -1,9 +1,10 @@
 import { renderTasks } from "./Task";
 import { renderAlltask } from "./navbar";
+import { renderTodayTask } from "./navbar";
 let defaultProjectList=[];
 let projectlist = localStorage.getItem("myProjectList");
     projectlist = JSON.parse(projectlist || JSON.stringify(defaultProjectList));
-let activeId;
+let activeId = null;
 
 class Project {
     constructor(name,id) {
@@ -73,7 +74,7 @@ function getActiveProject (e) {
         } else {
             activeId = e.target.dataset.listId;
         }
-    }
+    } 
     console.log(activeId);
     //add render tasks function for active project
     const projecttitle = document.querySelector(".project-title");
@@ -87,7 +88,8 @@ function getActiveProject (e) {
         projecttitle.textContent = "All task";
         renderAlltask();
     } else if (activeId === "Today") {
-        projecttitle.textContent = "Today"
+        projecttitle.textContent = "Today";
+        renderTodayTask();
     } else {
         plusButton.className = "fa-solid fa-circle-plus fa-2xl";
         span.textContent = "Add new task";
