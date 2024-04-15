@@ -1,6 +1,5 @@
 import { createNewProject , getActiveProject, renderProject,projectlist,activeId } from "./Project";
 import { closeTaskModal, openTaskModal, addNewTask, removeCompletedTask } from "./Task";
-import { removeTaskinAll } from "./navbar";
 function ProjectEventListener () {
     const projectform = document.querySelector(".project-form");
     projectform.addEventListener("submit", (createNewProject));
@@ -18,8 +17,9 @@ function TaskEventListener() {
             removeCompletedTask();
         }
     });
-
 }
+
+
 ProjectEventListener();
 TaskEventListener();
 openTaskModal();
