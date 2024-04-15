@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { projectlist, activeId, saveToLocalStorage } from "./Project";
 class Task {
     constructor(name, date, priority, complete) {
@@ -107,7 +108,7 @@ function addNewTask() {
     const taskname = document.querySelector(".task-name");
     const taskdate = document.querySelector(".task-date");
     const taskpriority = document.querySelector(".task-priority");
-    const newTask = new Task(taskname.value,taskdate.value, taskpriority.value, false);
+    const newTask = new Task(taskname.value,format(taskdate.value, "dd/MM/yyyy"), taskpriority.value, false);
     const activeproject = projectlist.find(project => project.id === activeId);
     if (activeproject) {
         activeproject.tasks.push(newTask);
@@ -142,7 +143,7 @@ function removeCompletedTask() {
         activeproject.tasks = activeproject.tasks.filter(task=> !task.complete);
         renderTasks(activeproject.tasks);
         saveToLocalStorage();
-    }, 200);
+    }, 280);
     
     
 }
