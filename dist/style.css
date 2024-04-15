@@ -270,6 +270,19 @@ footer {
         display: flex;
         flex-direction: column;
     }
+    .tasks-container {
+        width: 80%;
+        font-size: .7rem;
+        height: auto;
+        box-sizing: border-box;
+    }
+    .tasks {
+        height: auto;
+        overflow: auto;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        margin-right: 1rem;
+    }
     .navbar {
         width: 90%;
     }
