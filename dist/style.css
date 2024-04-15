@@ -1,36 +1,57 @@
-body {
-    font-family: "Roboto";
-    margin:0;
-    padding: 0;
-    background-image: linear-gradient(120deg, #f6d365, #fda085);
-    display: flex;
-    flex-direction: column;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
     position: relative;
     min-height: 100%;
 }
-.ICON {
-    margin-top: 2.5rem;
-    margin-right: 1rem;
 
+body {
+    font-family: "Roboto";
+    margin:0;
+    padding: 0;
+    background-image: linear-gradient(120deg, #f6d365, #fda085);
+    flex-direction: column;
+    object-fit: cover;
+    background-size: cover;
 }
-header {
-    padding: .6rem;
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+.title {
+    padding: 2rem;
     padding-left: 1.5rem;
     display: flex;
+    align-items:center;
+    gap: 1rem;
+}
+
+.menu-btn {
+    display: none;
 }
 main {
     display: flex;
-    min-height: 85vh;
+    min-height: 83vh;
 }
 
 .navbar {
     display: flex;
     flex-direction: column;
     padding: 1.2rem;
-    line-height: 1.5;
+    line-height: 2;
     width: 400px;
     min-width: 200px;
 }
@@ -45,6 +66,7 @@ main {
     cursor: pointer;
     align-items: center;
     gap: .5rem;
+    margin-top: .2rem;
 }
 
 .button-project {
@@ -93,6 +115,9 @@ main {
     width: 100%;
     margin-left: 1rem;
     font-size: inherit;
+}
+.task-body {
+    margin-top: 2rem;
 }
 
 .tasks-container {
@@ -143,6 +168,7 @@ main {
 }
 .control-panel {
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 #new-task {
@@ -214,10 +240,6 @@ dialog::backdrop {
     margin: .5rem;
 }
 
-.fade-out {
-    animation: fade-out-left .5s forwards;
-}
-
 .modal-btn {
     background-color: #fda085;
     outline: none;
@@ -227,6 +249,7 @@ dialog::backdrop {
     border-radius: 5px;
 }
 
+
 footer {
     position: absolute;
     bottom: 0;
@@ -235,6 +258,32 @@ footer {
     display: flex;
     justify-content: center;
     padding: .6rem;
+    margin: 0;
+}
+
+@media screen and (max-width:650px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar {
+        width: 90%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+    .navbar.show {
+        display: block;
+    }
 }
 
 
