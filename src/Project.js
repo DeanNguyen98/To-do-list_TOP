@@ -88,6 +88,8 @@ function getActiveProject (e) {
         projecttitle.textContent = "All task";
         renderAlltask();
     } else if (activeId === "Today") {
+        plusButton.className = "";
+        span.textContent = "";
         projecttitle.textContent = "Today";
         renderTodayTask();
     } else {
