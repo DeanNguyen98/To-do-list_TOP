@@ -60,7 +60,18 @@ function renderTodayTask() {
     });
 }
 
+function showNavBar () {
+    const menubtn = document.querySelector(".menu-btn");
+    menubtn.addEventListener("click", () => {
+        const navbar = document.querySelector(".navbar");
+        if (navbar.classList.contains(".show")) {
+            navbar.classList.remove("show");
+        } else {
+            navbar.classList.toggle("show");
+        }
+    })
+}
 
 
 
-export {renderTodayTask, renderAlltask};
+export {renderTodayTask, renderAlltask, showNavBar};
